@@ -1,9 +1,25 @@
 import { Request, Response } from 'express';
+import { clientSchema } from '../schemas/client';
 import { PrismaClient } from '../../prisma/generated/client';
 
 const prisma = new PrismaClient();
 
 export const createClient = async (req: Request, res: Response): Promise<void> => {
+    const validation = clientSchema.safeParse(req.body);
+
+    if (!validation.success) {
+        const { formErrors, fieldErrors } = validation.error.flatten();
+
+        res.status(422).json({
+            message: formErrors[0] || 'Validation failed',
+            errors: fieldErrors,
+        });
+
+        return;
+    }
+
+    // ...
+
     const client = await prisma.client.create({ data: req.body });
 
     res.status(201).json(client);
@@ -29,6 +45,21 @@ export const getClient = async (req: Request, res: Response): Promise<void> => {
 };
 
 export const updateClient = async (req: Request, res: Response): Promise<void> => {
+    const validation = clientSchema.safeParse(req.body);
+
+    if (!validation.success) {
+        const { formErrors, fieldErrors } = validation.error.flatten();
+
+        res.status(422).json({
+            message: formErrors[0] || 'Validation failed',
+            errors: fieldErrors,
+        });
+
+        return;
+    }
+
+    // ...
+
     const id = parseInt(req.params.id);
 
     const client = await prisma.client.update({
