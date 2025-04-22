@@ -6,7 +6,7 @@ import { DataTable } from "./components/data-table"
 
 async function fetchClients() {
   try {
-    const res = await axios.get(`${process.env.API_BASE_URL}/clients`)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/clients`)
     return res.data?.clients || [];
   } catch (error) {
     return [];
