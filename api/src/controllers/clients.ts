@@ -21,3 +21,11 @@ export const getClient = async (req: Request, res: Response): Promise<void> => {
 
     res.json(client);
 };
+
+export const deleteClient = async (req: Request, res: Response): Promise<void> => {
+    const id = parseInt(req.params.id);
+
+    await prisma.client.delete({ where: { id } });
+
+    res.status(204).send();
+};
