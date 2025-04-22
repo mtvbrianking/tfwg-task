@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { isUnique } from '../validation/rules';
 import { clientSchema } from '../schemas/client';
 import { PrismaClient } from '../../prisma/generated/client';
 
@@ -13,6 +14,17 @@ export const createClient = async (req: Request, res: Response): Promise<void> =
         res.status(422).json({
             message: formErrors[0] || 'Validation failed',
             errors: fieldErrors,
+        });
+
+        return;
+    }
+
+    // ...
+
+    if (await isUnique(req, 'client', 'email')) {
+        res.status(422).json({
+            message: 'Validation failed',
+            errors: { "email": ['The email address is already taken'] },
         });
 
         return;
@@ -53,6 +65,17 @@ export const updateClient = async (req: Request, res: Response): Promise<void> =
         res.status(422).json({
             message: formErrors[0] || 'Validation failed',
             errors: fieldErrors,
+        });
+
+        return;
+    }
+
+    // ...
+
+    if (await isUnique(req, 'client', 'email', 'id')) {
+        res.status(422).json({
+            message: 'Validation failed',
+            errors: { "email": ['Email is already taken by another client.'] },
         });
 
         return;
