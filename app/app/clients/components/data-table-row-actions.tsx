@@ -35,14 +35,14 @@ export function DataTableRowActions<TData>({
       <DropdownMenuContent align="end" className="w-[160px]">
         <DropdownMenuItem asChild>
           <Link
-            href={`/${row.getValue("id")}`}
+            href={`/clients/${row.getValue("id")}`}
             className="cursor-pointer">
             View
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link
-            href={`/${row.getValue("id")}/edit`}
+            href={`/clients/${row.getValue("id")}/edit`}
             className="cursor-pointer">
             Edit
           </Link>

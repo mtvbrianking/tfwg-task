@@ -60,26 +60,26 @@ export function ShowForm({ id }: ShowFormProps) {
     if (!client) return <p>Client not found</p>
 
     return (
-        <div className="space-y-6">
+        <div className="w-full max-w-md bg-white p-6 rounded shadow space-y-8">
             <div>
                 <label className="block font-medium mb-1">First Name</label>
-                <Input value={client.firstName} readOnly />
+                <Input value={client.firstName} disabled />
             </div>
             <div>
                 <label className="block font-medium mb-1">Last Name</label>
-                <Input value={client.lastName} readOnly />
+                <Input value={client.lastName} disabled />
             </div>
             <div>
                 <label className="block font-medium mb-1">Email</label>
-                <Input value={client.email} type="email" readOnly />
+                <Input value={client.email} type="email" disabled />
             </div>
             <div>
                 <label className="block font-medium mb-1">Gender</label>
-                <Input value={client.gender} readOnly />
+                <Input value={client.gender} disabled />
             </div>
             <div>
                 <label className="block font-medium mb-1">Avatar</label>
-                <Input value={client.image} readOnly />
+                <Input value={client.image} disabled />
             </div>
 
             <div className="space-x-4 pt-4">

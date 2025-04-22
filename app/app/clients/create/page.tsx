@@ -4,6 +4,8 @@ import { CreateForm } from "./create-form"
 
 export default function CreateClientPage() {
     return (
-        <CreateForm />
+        <div className="flex items-center justify-center min-h-screen">
+            <CreateForm />
+        </div>
     )
 }

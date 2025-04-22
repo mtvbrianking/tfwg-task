@@ -11,6 +11,8 @@ export default function EditClientPage() {
     }
 
     return (
-        <EditForm id={id as string} />
+        <div className="flex items-center justify-center min-h-screen">
+            <EditForm id={id as string} />
+        </div>
     )
 }

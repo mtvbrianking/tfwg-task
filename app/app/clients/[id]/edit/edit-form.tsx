@@ -86,7 +86,7 @@ export function EditForm({ id }: EditFormProps) {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full max-w-md bg-white p-6 rounded shadow space-y-8">
                 <FormField
                     control={form.control}
                     name="firstName"
