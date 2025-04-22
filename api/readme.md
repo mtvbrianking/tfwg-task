@@ -43,10 +43,8 @@ Use Prisma Studio to explore your data visually:
 npx prisma studio
 ```
 
-### 4. Start the Dev Server
+### Start the Dev Server
 
 ```bash
 npm run dev
 ```
-
-Server runs at: http://localhost:8000
