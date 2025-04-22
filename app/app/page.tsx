@@ -1,3 +1,4 @@
+import axios from "axios"
 import { AppSidebar } from "@/components/app-sidebar"
 import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
@@ -5,9 +6,20 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { columns } from "./components/columns"
 import { DataTable } from "./components/data-table"
 
-import clients from "./data/clients.json"
+// import _clients from "./data/clients.json"
 
-export default function Page() {
+async function fetchClients() {
+  try {
+    const res = await axios.get(`${process.env.API_BASE_URL}/clients`)
+    return res.data?.clients || [];
+  } catch (error) {
+    return [];
+  }
+}
+
+export default async function Page() {
+  const clients = await fetchClients();
+
   return (
     <SidebarProvider
       style={
