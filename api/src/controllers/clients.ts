@@ -28,6 +28,17 @@ export const getClient = async (req: Request, res: Response): Promise<void> => {
     res.json(client);
 };
 
+export const updateClient = async (req: Request, res: Response): Promise<void> => {
+    const id = parseInt(req.params.id);
+
+    const client = await prisma.client.update({
+        where: { id },
+        data: req.body,
+    });
+
+    res.json(client);
+};
+
 export const deleteClient = async (req: Request, res: Response): Promise<void> => {
     const id = parseInt(req.params.id);
 
