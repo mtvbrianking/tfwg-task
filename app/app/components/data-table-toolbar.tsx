@@ -53,7 +53,7 @@ export function DataTableToolbar<TData>({
       </div>
       <DataTableViewOptions table={table} />
       <Button asChild variant="outline" size="sm" className="ml-2">
-        <Link href="/clients/create">
+        <Link href="/create">
           <Plus />
           <span className="hidden lg:inline">Add Client</span>
         </Link>

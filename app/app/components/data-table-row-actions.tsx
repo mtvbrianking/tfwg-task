@@ -14,8 +14,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import { clientSchema } from "../data/schema"
-
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>
 }
@@ -23,8 +21,6 @@ interface DataTableRowActionsProps<TData> {
 export function DataTableRowActions<TData>({
   row,
 }: DataTableRowActionsProps<TData>) {
-  const client = clientSchema.parse(row.original)
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -39,14 +35,14 @@ export function DataTableRowActions<TData>({
       <DropdownMenuContent align="end" className="w-[160px]">
         <DropdownMenuItem asChild>
           <Link
-            href={`/clients/${row.getValue("id")}`}
+            href={`/${row.getValue("id")}`}
             className="cursor-pointer">
             View
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link
-            href={`/clients/${row.getValue("id")}/edit`}
+            href={`/${row.getValue("id")}/edit`}
             className="cursor-pointer">
             Edit
           </Link>
